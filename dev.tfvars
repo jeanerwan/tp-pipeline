@@ -1,2 +1,0 @@
-prenom      = "prenom"
-environment = "dev"
