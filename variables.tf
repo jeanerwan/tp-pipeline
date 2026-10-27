@@ -9,6 +9,18 @@ variable "prenom" {
 }
 
 variable "location" {
-  type    = string
-  default = "swedencentral"
+  type        = string
+  description = "Région Azure"
+  default     = "swedencentral"
+}
+
+variable "environment" {
+  type        = string
+  description = "Nom de l'environnement"
+  default     = "dev"
+
+  validation {
+    condition     = contains(["dev", "prod"], var.environment)
+    error_message = "Valeurs permises : dev ou prod."
+  }
 }
