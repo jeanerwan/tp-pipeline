@@ -9,16 +9,18 @@ variable "prenom" {
 }
 
 variable "location" {
-  type    = string
-  default = "swedencentral"
+  type        = string
+  description = "Région Azure"
+  default     = "swedencentral"
 }
 
-variable "github_subject" {
+variable "environment" {
   type        = string
-  description = "Début du subject OIDC de votre dépôt, lu dans le log de azure/login : repo:<propriétaire>@<id>/<dépôt>@<id>"
+  description = "Nom de l'environnement"
+  default     = "dev"
 
   validation {
-    condition     = can(regex("^repo:[^:]+$", var.github_subject))
-    error_message = "Format attendu : repo:<propriétaire>@<id>/<dépôt>@<id>, sans :ref ni :pull_request."
+    condition     = contains(["dev", "prod"], var.environment)
+    error_message = "Valeurs permises : dev ou prod."
   }
 }
