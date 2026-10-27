@@ -1,3 +1,3 @@
-prenom      = "prenom"
+prenom      = "erwan"
 environment = "dev"
-nom         = "erwan"
+nom         = "thomas"
